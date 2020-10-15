@@ -41,8 +41,31 @@ function createForm(){
     usersForm.addEventListener("submit", userFormSubmission)
 }
 
-function userFormSubmission(){
-    debugger
+function userFormSubmission(e){
+    e.preventDefault();
+    let name = document.getElementById("name").value
+    let username = document.getElementById("username").value
+    let email = document.getElementById("email").value
+
+    let user = {
+        name: name,
+        username: username,
+        email: email
+    }
+
+    fetch(`${BASE_URL}/users`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(resp => resp.json())
+    .then(user =>{
+        let u = new User(user.id, user.name, user.username, user.email)
+        u.renderUser();
+})
 }
 
 
