@@ -12,7 +12,7 @@ function fetchUsers(){
     .then(resp => resp.json())
     .then(users => {
         for (const user of users){
-            let u = new User(user.id, user.first_name, user.last_name, user.user_name, user.email)
+            let u = new User(user.id, user.name, user.username, user.email)
             u.renderUser();
         }
     })
@@ -31,9 +31,8 @@ function createForm(){
     usersForm.innerHTML +=
     `
     <form> 
-    First name: <input type="text" id="first_name"><br>
-    Last name: <input type="text" id="last_name"><br>
-    Username: <input type="text" id="user_name"><br>
+    Name: <input type="text" id="name"><br>
+    Username: <input type="text" id="username"><br>
     Email: <input type="text" id="email"><br>
     <input type="submit" value="Create User">
     </form>

@@ -1,9 +1,8 @@
  class User{
-     constructor(id, first_name, last_name, user_name, email){
+     constructor(id, name, username, email){
          this.id = id;
-         this.first_name = first_name;
-         this.last_name = last_name;
-         this.user_name = user_name;
+         this.name = name;
+         this.username = username;
          this.email = email;
      }
 
@@ -14,8 +13,8 @@
          usersDiv.innerHTML +=
          `
          <ul>
-         <h3>Username: ${this.user_name}</h3>
-         <li> Name: ${this.first_name} ${this.last_name}<br>
+         <h3>Username: ${this.username}</h3>
+         <li> Name: ${this.name}<br>
               Email: ${this.email}<br><br>
          </li> 
          </ul>
