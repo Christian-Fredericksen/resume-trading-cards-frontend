@@ -18,6 +18,7 @@
               Email: ${this.email}<br><br>
          </li> 
          </ul>
+         <button class="delete-button" data-id=${this.id} onclick="deleteUser()">Delete User</button> <button>Create Card</button>
          `
      }
  }

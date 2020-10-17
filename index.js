@@ -46,7 +46,7 @@ function userFormSubmission(e){
     let name = document.getElementById("name").value
     let username = document.getElementById("username").value
     let email = document.getElementById("email").value
-
+    let form = document.getElementById("users-form")
     let user = {
         name: name,
         username: username,
@@ -71,3 +71,18 @@ function userFormSubmission(e){
 
 
 // delete = delete a user
+
+// let buttons = document.getElementsByClassName("delete-button")
+// for (const button of buttons){
+//     button.addEventListener("click", () =>{
+//     })
+// }
+
+function deleteUser(){
+    let userId = parseInt(event.target.dataset.id)
+
+    fetch(`${BASE_URL}/users/${userId}`, {
+        method: 'DELETE'
+    })
+    this.location.reload()
+}
