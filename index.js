@@ -1,11 +1,10 @@
+const BASE_URL ="http://127.0.0.1:3000"
+
 document.addEventListener("DOMContentLoaded", () => {
     createForm();
-     fetchUsers()
-    // cardsForm()
     navbar()
 }) 
 
-const BASE_URL ="http://127.0.0.1:3000"
 
 // read = fetch users index
 
@@ -65,6 +64,7 @@ function userFormSubmission(e){
     .then(resp => resp.json())
     .then(user =>{
         let u = new User(user.id, user.name, user.username, user.email)
+        clearScreen();
         u.renderUser();
 })
 }
@@ -85,7 +85,10 @@ function deleteUser(){
     fetch(`${BASE_URL}/users/${userId}`, {
         method: 'DELETE'
     })
-    this.location.reload()
+    fetchUsers();
+    clearScreen() 
+
+    // this.location.reload()
 }
 
 // CREATE CARD
@@ -160,8 +163,14 @@ function clearScreen(){
 
 function navbar() {
     const users = document.getElementById("users-nav")
+    let usersContainer = document.getElementById("users-container")
     users.addEventListener("click", () => {
     clearScreen();
+    usersContainer.innerHTML +=
+    `
+        <h4>All Users in Database</h4>
+
+    `
         fetchUsers()
     })
     const home = document.getElementById("home-nav")
